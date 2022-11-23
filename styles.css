@@ -7,7 +7,8 @@ html{
 
 h1{
     font-size: 1.5rem;
-    color: whitesmoke;    
+    color: whitesmoke; 
+    margin-top: 3rem;   
 }
 
 body{
@@ -21,73 +22,138 @@ a{
 a:hover{
     color: rgb(92, 92, 157)1;
     text-decoration: none;
+    transition: all
 }
 
-.container{
+.container-proto{
     display: flex; 
-    height: 40vh; 
-    width: 50vw;
-    place-items: center;
-    margin: auto; 
-    background-color:rgb(30, 30, 95);
-    border-radius: 25px;
-    color: whitesmoke; 
-    align-items: center;
-    flex-direction: column;
-
-}
-.pop-up{
-    display: grid;
-    height: 35vh; 
-    width: 45vw; 
-    grid-gap: 1rem;
-    justify-content: space-around;
-    padding: 2rem;
-    grid-template-columns: repeat(6, 1fr);
-    align-content: stretch;
-    grid-template-areas: 
-    "one one two two three three" 
-    "four four four five five five";
+    margin-top: 5%; 
 }
 
+@media screen and (min-width: 1000px){
+    .container{
+        display: flex; 
+        height: 70vh; 
+        width: 50vw;
+        margin: auto; 
+        background-color:rgb(30, 30, 95);
+        border-radius: 25px;
+        color: whitesmoke; 
+        align-items: center;
+        flex-direction: column;
 
-.balance{
-    grid-area: one;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 2rem;
+    }
+   
+
+    .pop-up{
+        display: grid;
+        height: 35vh; 
+        width: 45vw; 
+        grid-gap: 1rem;
+        justify-content: space-around;
+        padding: 2rem;
+        grid-template-columns: repeat(6, 1fr);
+        align-content: stretch;
+        grid-template-areas: "one one two two three three" 
+        "four four four five five five";
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .pop-up{
+        display: grid;
+        height: 35vh; 
+        width: 45vw; 
+        grid-gap: 1rem;
+        justify-content: space-around;
+        padding: 2rem;
+        grid-template-columns: repeat(2, 1fr);
+        align-content: stretch;
+        grid-template-areas: "one one" "two two" "three three" 
+        "four four" "five five";
+    }
+
+
+    .container{
+        display: flex; 
+        height: 120vh; 
+        width: 50vw;
+        margin: auto; 
+        background-color:rgb(30, 30, 95);
+        border-radius: 25px;
+        color: whitesmoke; 
+        align-items: center;
+        flex-direction: column;
+
+    }
+
+}
+
+@media screen and (max-width: 600px){
+
+    .container{
+        display: flex; 
+        height: 125vh; 
+        width: 50vw;
+        margin: auto; 
+        background-color:rgb(30, 30, 95);
+        border-radius: 25px;
+        color: whitesmoke; 
+        align-items: center;
+        flex-direction: column;
+    }
+    .pop-up{
+        display: grid;
+        height: 35vh; 
+        width: 45vw; 
+        grid-gap: 1rem;
+        justify-content: space-around;
+        padding: 2rem;
+        grid-template-columns: repeat(2, 1fr);
+        align-content: stretch;
+        grid-template-areas: "one one" "two two" "three three" 
+        "four four" "five five";
+    }
+
+}
+
+.element-style{
     border: whitesmoke;
     border-radius: 25px;
     border-style: solid; 
-    border-width: .5rem;
-    padding: 2rem;
+    border-width: .2rem;
+    padding: 1rem;
+    font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2rem;
+    text-align: center;
+    min-width: 0; 
+
+}
+
+.element-style:hover{
+    box-shadow: 1px 2px 2px 3px rgb(92, 92, 157);
+}
+
+#balance{
+    grid-area: one;
+    display: flex;
+
+    
 
 }
 
 .deposit{
     grid-area:two;
     display: flex;
-    flex-wrap: wrap;
-    margin: 2rem;
-    border: whitesmoke;
-    border-radius: 25px;
-    border-style: solid; 
-    border-width: .5rem;
-    padding: 2rem;
-
 }
 
 .withdraw{
 
     grid-area:three;
     display: flex;
-    flex-wrap: wrap;
-    margin: 2rem;
-    border: whitesmoke;
-    border-radius: 25px;
-    border-style: solid; 
-    border-width: .5rem;
-    padding: 2rem;
 
 }
 
@@ -95,31 +161,24 @@ a:hover{
 .change{
     grid-area:four;
     display: flex;
-    flex-wrap: wrap;
-    margin: 2rem;
-    border: whitesmoke;
-    border-radius: 25px;
-    border-style: solid; 
-    border-width: .5rem;
-    padding: 2rem;
 
 }
 
 .logout{
     grid-area:five;    
     display: flex;
-    flex-wrap: wrap;
-    margin: 2rem;
-    border: whitesmoke;
-    border-radius: 25px;
-    border-style: solid; 
-    border-width: .5rem;
-    padding: 2rem;
+
 }
 
 
-
-
-
-
-
+.line{
+    display: block;
+    border-width:.05px;
+    border-color: whitesmoke;
+    background-color: whitesmoke;
+    margin-left: 2vw; 
+    margin-right: 2vw; 
+    height: 1vh; 
+    overflow: hidden;
+    width: 80%;
+}
