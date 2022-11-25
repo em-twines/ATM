@@ -64,13 +64,15 @@ if (dep) {
 function deposit(){
     if (correctLogin == true){
 
-        let deposit = prompt("How much would you like to deposit?", ')0');
+        let deposit = prompt("How much would you like to deposit?", '0');
         if(deposit){
             let depositInt = parseInt(deposit);
             money = money + depositInt; 
             alert(`Your balance is now ${money}.`);
         }
         else{
+            deposit = 0;
+            money = money + deposit; 
             alert(`Your balance is ${money}.`);
         }
     }
@@ -97,6 +99,8 @@ function withdraw(){
             alert(`Your balance is now ${money}.`);
         }
         else{
+            withdraw = 0;
+            money = money - withdraw; 
             alert(`Your balance is ${money}.`);
         }
     }
@@ -119,35 +123,35 @@ function change(){
 
         login();
         let validAnswer = false; 
-        if (validAnswer){
+            let resp = prompt('Would you like to change your username, password, or both?')
+            if (resp){
             while (validAnswer == false){
-                let resp = prompt('Would you like to change your username, password, or both?')
-                if (resp){
-                    resp = resp.toLowerCase();
-                    try {
-                        resp == 'username' || 'password' || 'both';
-                        validAnswer = true;
-                    } catch (error) {
-                        alert('Invalid response. Please try again.');
-                    }
-                    
-                    if (resp == 'username'){
-                        username = prompt("Choose a new username.");
-                        alert('You have successfully changed your username.');
-                    }
-                    else if (resp == 'password'){
-                        userPass = prompt("Please choose a new password.");
-                        alert('You have successfully changed your password.');
-        
-                    }
-                    else{
-                        username = prompt("Choose a new username.");
-                        alert('You have successfully changed your username.');
-                        userPass = prompt("Please choose a new password.");
-                        alert('You have successfully changed your password.');
-                    }
+             
+                resp = resp.toLowerCase();
+                try {
+                    resp == 'username' || 'password' || 'both';
+                    validAnswer = true;
+                } catch (error) {
+                    alert('Invalid response. Please try again.');
+                }
+                
+                if (resp == 'username'){
+                    username = prompt("Choose a new username.");
+                    alert('You have successfully changed your username.');
+                }
+                else if (resp == 'password'){
+                    userPass = prompt("Please choose a new password.");
+                    alert('You have successfully changed your password.');
+    
+                }
+                else{
+                    username = prompt("Choose a new username.");
+                    alert('You have successfully changed your username.');
+                    userPass = prompt("Please choose a new password.");
+                    alert('You have successfully changed your password.');
                 }
             }
+            
         }
     }
     else{
