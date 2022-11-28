@@ -1,4 +1,3 @@
-
 addEventListener;
 
 let money = 100; 
@@ -8,30 +7,85 @@ const dep = document.getElementById('deposit');
 const chng = document.getElementById('change');
 const lgt = document.getElementById('logout');
 let correctLogin = false; 
-// //create username
-let username = prompt("Choose a username.");
-// //create a password
-let userPass = prompt("Please choose a password.");
+let username; 
+let userPass;
 
-//login
+declare();
 login();
 
+
+function declare(){
+    while (username == null || username.length == 0){
+       username = prompt("Choose a username.");
+    }
+    while(userPass == null || userPass.length == 0){
+        userPass = prompt("Please choose a password.");
+    }
+}
+
+
+
 function login(){
-    correctLogin = false;
-    let userLoginName = prompt("Please enter your username.", 'username');
-    if (userLoginName){
-        while (correctLogin == false){
-            while (userLoginName != username){
-                userLoginName = prompt("We don't have an account associated with that username! \nPlease try again.");
+    correctUser = false;
+    correctPass = false;
+    while (correctUser == false || correctPass == false){
+        correctLogin = false; 
+        while(correctUser == false){
+            let userLoginName = prompt("Please enter your username.");
+            if (userLoginName){
+                while (userLoginName != username){
+                    userLoginName = prompt("We don't have an account associated with that username! \nPlease try again.");
+                }
+                
+            correctUser = true;
             }
-            let userLoginPass = prompt("Please enter your password.", 'password');
-            while (userLoginPass != userPass){
-                userLoginPass = prompt("Incorrect password. \nPlease try again.");
+        }
+
+        while (correctPass == false){
+            let userLoginPass = prompt("Please enter your password.");
+            if (userLoginPass){
+                while (userLoginPass != userPass){
+                    userLoginPass = prompt("Incorrect password. \nPlease try again.");
+                }
+            correctPass = true; 
+            
             }
-            correctLogin = true; 
+        }
+        correctLogin = true;
+    }
+}
+
+function checkUser(){
+    let userLoginName = prompt("Please enter your username.");
+    while (userLoginName != null && userLoginName.length != 0){
+        if (userLoginName){
+        userLoginName = prompt("We don't have an account associated with that username! \nPlease try again.");
+        }
+        if (userLoginName == username){
+            return true;
+        }
+        else{
+            return false; 
         }
     }
+}
 
+function checkPass(){
+    let userLoginPass = prompt("Please enter your password.");
+    while (userLoginPass != null && userLoginPass.length != 0){
+        if (userLoginPass){
+            userLoginPass = prompt("Incorrect password. \nPlease try again.");
+        }
+        if (userLoginPass == userPass){
+            correctPasslocal = true; 
+            return true;
+        }
+    
+        else{
+            return false; 
+        }
+    }
+    
 }
 
 
@@ -120,43 +174,55 @@ if (chng) {
 
 function change(){
     if (correctLogin == true){
+        let usr; 
+        let pass;
+        usr = checkUser();
+        if (usr == true){
+            pass = checkPass();
 
-        login();
-        let validAnswer = false; 
-            let resp = prompt('Would you like to change your username, password, or both?')
-            if (resp){
-            while (validAnswer == false){
-             
-                resp = resp.toLowerCase();
-                try {
-                    resp == 'username' || 'password' || 'both';
-                    validAnswer = true;
-                } catch (error) {
-                    alert('Invalid response. Please try again.');
+            if (pass == true){
+                let validAnswer = false; 
+                let resp = prompt('Would you like to change your username, password, or both?');
+                if (resp){
+                    while (validAnswer == false){
+                    
+                        resp = resp.toLowerCase();
+                        try {
+                            resp == 'username' || 'password' || 'both';
+                            validAnswer = true;
+                        } catch (error) {
+                            alert('Invalid response. Please try again.');
+                        }
+                        
+                        if (resp == 'username'){
+                            username = prompt("Choose a new username.");
+                            alert('You have successfully changed your username.');
+                        }
+                        else if (resp == 'password'){
+                            userPass = prompt("Please choose a new password.");
+                            alert('You have successfully changed your password.');
+            
+                        }
+                        else{
+                            username = prompt("Choose a new username.");
+                            alert('You have successfully changed your username.');
+                            userPass = prompt("Please choose a new password.");
+                            alert('You have successfully changed your password.');
+                        }
+                    }
+                    
                 }
                 
-                if (resp == 'username'){
-                    username = prompt("Choose a new username.");
-                    alert('You have successfully changed your username.');
-                }
-                else if (resp == 'password'){
-                    userPass = prompt("Please choose a new password.");
-                    alert('You have successfully changed your password.');
-    
-                }
-                else{
-                    username = prompt("Choose a new username.");
-                    alert('You have successfully changed your username.');
-                    userPass = prompt("Please choose a new password.");
-                    alert('You have successfully changed your password.');
-                }
-            }
             
+                else{
+                alert('Please login to access this feature.')
+                }
+            }   
         }
+
     }
-    else{
-        alert('Please login to access this feature.')
-    }
+    
+    
 }
 
 //logout
